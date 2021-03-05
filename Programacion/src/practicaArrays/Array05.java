@@ -1,4 +1,4 @@
-package Array1;
+package practicaArrays;
 
 import java.util.Scanner;
 
