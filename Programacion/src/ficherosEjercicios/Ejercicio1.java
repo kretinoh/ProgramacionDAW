@@ -11,7 +11,7 @@ import java.io.FileWriter;
 public class Ejercicio1 {
 
   public static void main(String[] args) {
-    try (var file= new BufferedWriter(new FileWriter("primos.dat"))) {
+    try (var file = new BufferedWriter(new FileWriter("primos.dat"))) {
       for (int i = 1; i <= 500; i++) {
         if (esPrimo(i)) {
           file.write(String.valueOf(i));
@@ -23,7 +23,7 @@ public class Ejercicio1 {
     }
 
   }
-  
+
   /**
    * Devuelve true si es primo
    * 
@@ -34,7 +34,7 @@ public class Ejercicio1 {
     while ((primo) && (contador != numero)) {
       if (numero % contador == 0)
         primo = false;
-        contador ++;
+      contador++;
     }
     return primo;
   }
