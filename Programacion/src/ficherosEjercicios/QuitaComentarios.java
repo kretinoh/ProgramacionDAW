@@ -31,8 +31,8 @@ public class QuitaComentarios {
           // Con substring cogemos desde el inicio hasta donde se encuentra el simbolo "//"
           linea = linea.substring(0, linea.indexOf("//"));
           destinationFile.write(linea);
-        } else if (linea.contains("/**")) {
-
+        } else if (!linea.contains("*  ")) {
+          destinationFile.write(linea);
         }
         // Salto de linea
         destinationFile.newLine();
