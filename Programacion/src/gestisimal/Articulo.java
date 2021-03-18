@@ -4,53 +4,50 @@ package gestisimal;
  * 
  * @author Kretinoh
  *
- *  ESTADO
- *  codigo, descripcion, stock_seguridad, stock_maximo,
- *  precio_compra, precio_venta,num_unidades (NUNCA NEGATIVAS)
- *  
- *  COMPORTAMIENTO
- *  - CODIGO GENERADO AUTOMÁTICAMENTE EN EL CONSTRUCTOR
- *  - QUITAR SETTERS DE CÓDIGO
- *  - MOSTRAR ARTICULO (toString)
+ *         ESTADO codigo, descripcion, stock_seguridad, stock_maximo, precio_compra,
+ *         precio_venta,num_unidades (NUNCA NEGATIVAS)
+ * 
+ *         COMPORTAMIENTO - CODIGO GENERADO AUTOMÁTICAMENTE EN EL CONSTRUCTOR - QUITAR SETTERS DE
+ *         CÓDIGO - MOSTRAR ARTICULO (toString)
  */
 
 public class Articulo {
-  static private int CODIGO = 0;
+  static private int CODIGO = 1;
 
-  int codigo = 0, num_unidades, stock_seguridad, stock_maximo;
+  int codigo, num_unidades, stock_seguridad, stock_maximo;
   double precio_compra, precio_venta;
   String descripcion;
 
-  
+
   /**
-   *  CONSTRUCTOR
-   *  
+   * Constructor1
+   * 
    * @param codigo
    * @param descripcion
    * @param num_unidades
-   * @param stock_seguridad
-   * @param stock_maximo
    * @param precio_compra
    * @param precio_venta
+   * @throws EsNegativo
    */
-  public Articulo(int codigo,String descripcion, int num_unidades, int stock_seguridad, int stock_maximo,
-      double precio_compra, double precio_venta) throws EsNegativo {
-    
+  public Articulo(String descripcion, int num_unidades, double precio_compra, double precio_venta)
+      throws EsNegativo {
+
     // Nuestro 'codigo' va a aumentar cada vez que se cree un artículo
     this.codigo = CODIGO++;
     setDescripcion(descripcion);
     // Si los mencionados son negativos no los meteremos
-    setNum_unidades(this.numeroNegativo(num_unidades));
-    setPrecio_compra(this.numeroNegativo((int)precio_compra));
-    setPrecio_venta(this.numeroNegativo((int)precio_venta));
-
- 
-    this.stock_seguridad = stock_seguridad;
-    this.stock_maximo = stock_maximo;
+    setNum_unidades(numeroNegativo(num_unidades));
+    this.numeroNegativo((int) precio_compra);
+    this.numeroNegativo((int) precio_venta);
   }
-  
-// GETTER AND SETTERS
-  
+
+  // PREGUNTAR PORQUE SE HACE ESTO
+  public Articulo(int codigo) {
+    codigo = this.codigo;
+  }
+
+  // GETTER AND SETTERS
+
   /**
    * 
    * @return
@@ -165,15 +162,12 @@ public class Articulo {
    * @param numero
    * @throws EsNegativo
    */
-  public void numeroNegativo(int numero) throws EsNegativo{
+  public void numeroNegativo(int numero) throws EsNegativo {
     if (numero < 0) {
       throw new EsNegativo("El número introducido es negativo");
     }
-    }
-  
+  }
 
-
-  
 
 
   @Override
@@ -200,11 +194,10 @@ public class Articulo {
 
   @Override
   public String toString() {
-    return "Articulo [codigo=" + codigo + ", num_unidades=" + num_unidades + ", stock_seguridad="
-        + stock_seguridad + ", stock_maximo=" + stock_maximo + ", precio_compra=" + precio_compra
-        + ", precio_venta=" + precio_venta + ", descripcion=" + descripcion + "]";
+    return "Articulo [codigo=" + codigo + ", num_unidades=" + num_unidades + ", precio_compra="
+        + precio_compra + ", precio_venta=" + precio_venta + ", descripcion=" + descripcion + "]";
   }
 
-  
-  
+
+
 }
