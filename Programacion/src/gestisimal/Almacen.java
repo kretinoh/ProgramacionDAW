@@ -23,7 +23,14 @@ public class Almacen {
   /**
    * Almacén de Articulos
    */
-  private ArrayList<Articulo> almacen = new ArrayList<Articulo>();
+  private ArrayList<Articulo> almacen;
+  
+  /**
+   * Constructor
+   */
+  protected Almacen() {
+    this.almacen = new Arraylist<>();
+  }
 
   
   /**

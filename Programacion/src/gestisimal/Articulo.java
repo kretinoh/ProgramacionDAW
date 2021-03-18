@@ -15,6 +15,7 @@ package gestisimal;
  */
 
 public class Articulo {
+  static private int CODIGO = 0;
 
   int codigo = 0, num_unidades, stock_seguridad, stock_maximo;
   double precio_compra, precio_venta;
@@ -33,19 +34,16 @@ public class Articulo {
    * @param precio_venta
    */
   public Articulo(int codigo,String descripcion, int num_unidades, int stock_seguridad, int stock_maximo,
-      double precio_compra, double precio_venta) {
+      double precio_compra, double precio_venta) throws EsNegativo {
     
     // Nuestro 'codigo' va a aumentar cada vez que se cree un artículo
-    this.codigo++;
-    this.descripcion = descripcion;
-
+    this.codigo = CODIGO++;
+    setDescripcion(descripcion);
     // Si los mencionados son negativos no los meteremos
-    if ((!esNegativo((int) precio_compra) && (!esNegativo((int) precio_venta) && (!esNegativo(num_unidades))))) {
+    setNum_unidades(this.numeroNegativo(num_unidades));
+    setPrecio_compra(this.numeroNegativo((int)precio_compra));
+    setPrecio_venta(this.numeroNegativo((int)precio_venta));
 
-      this.num_unidades = num_unidades;
-      this.precio_compra = precio_compra;
-      this.precio_venta = precio_venta;
-    }
  
     this.stock_seguridad = stock_seguridad;
     this.stock_maximo = stock_maximo;
@@ -57,7 +55,7 @@ public class Articulo {
    * 
    * @return
    */
-  public int getNum_unidades() {
+  protected int getNum_unidades() {
     return num_unidades;
   }
 
@@ -66,7 +64,7 @@ public class Articulo {
    * 
    * @param num_unidades
    */
-  public void setNum_unidades(int num_unidades) {
+  protected void setNum_unidades(int num_unidades) {
     this.num_unidades = num_unidades;
   }
 
@@ -75,7 +73,7 @@ public class Articulo {
    * 
    * @return
    */
-  public int getStock_seguridad() {
+  protected int getStock_seguridad() {
     return stock_seguridad;
   }
 
@@ -84,7 +82,7 @@ public class Articulo {
    * 
    * @param stock_seguridad
    */
-  public void setStock_seguridad(int stock_seguridad) {
+  protected void setStock_seguridad(int stock_seguridad) {
     this.stock_seguridad = stock_seguridad;
   }
 
@@ -93,7 +91,7 @@ public class Articulo {
    * 
    * @return
    */
-  public int getStock_maximo() {
+  protected int getStock_maximo() {
     return stock_maximo;
   }
 
@@ -102,7 +100,7 @@ public class Articulo {
    * 
    * @param stock_maximo
    */
-  public void setStock_maximo(int stock_maximo) {
+  protected void setStock_maximo(int stock_maximo) {
     this.stock_maximo = stock_maximo;
   }
 
@@ -111,7 +109,7 @@ public class Articulo {
    * 
    * @return
    */
-  public double getPrecio_compra() {
+  protected double getPrecio_compra() {
     return precio_compra;
   }
 
@@ -120,7 +118,7 @@ public class Articulo {
    * 
    * @param precio_compra
    */
-  public void setPrecio_compra(double precio_compra) {
+  protected void setPrecio_compra(double precio_compra) {
     this.precio_compra = precio_compra;
   }
 
@@ -129,7 +127,7 @@ public class Articulo {
    * 
    * @return
    */
-  public double getPrecio_venta() {
+  protected double getPrecio_venta() {
     return precio_venta;
   }
 
@@ -138,7 +136,7 @@ public class Articulo {
    * 
    * @param precio_venta
    */
-  public void setPrecio_venta(double precio_venta) {
+  protected void setPrecio_venta(double precio_venta) {
     this.precio_venta = precio_venta;
   }
 
@@ -147,7 +145,7 @@ public class Articulo {
    * 
    * @return
    */
-  public String getDescripcion() {
+  protected String getDescripcion() {
     return descripcion;
   }
 
@@ -156,29 +154,57 @@ public class Articulo {
    * 
    * @param descripcion
    */
-  public void setDescripcion(String descripcion) {
+  protected void setDescripcion(String descripcion) {
     this.descripcion = descripcion;
   }
 
 
   // COMPORTAMIENTO
-
   /**
-   * Miramos si el numero es negativo
-   * @param o
-   * @return
+   * 
+   * @param numero
+   * @throws EsNegativo
    */
-  public boolean esNegativo(int o) {
-    if (o < 0) {
-      return true;
-    } else {
-      return false;
+  public void numeroNegativo(int numero) throws EsNegativo{
+    if (numero < 0) {
+      throw new EsNegativo("El número introducido es negativo");
     }
+    }
+  
+
+
+  
+
+
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + codigo;
+    return result;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj)
+      return true;
+    if (obj == null)
+      return false;
+    if (getClass() != obj.getClass())
+      return false;
+    Articulo other = (Articulo) obj;
+    if (codigo != other.codigo)
+      return false;
+    return true;
   }
 
   @Override
   public String toString() {
-    return "Articulo [toString()=" + super.toString() + "]";
+    return "Articulo [codigo=" + codigo + ", num_unidades=" + num_unidades + ", stock_seguridad="
+        + stock_seguridad + ", stock_maximo=" + stock_maximo + ", precio_compra=" + precio_compra
+        + ", precio_venta=" + precio_venta + ", descripcion=" + descripcion + "]";
   }
+
+  
   
 }
