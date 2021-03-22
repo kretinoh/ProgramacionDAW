@@ -23,28 +23,32 @@ public class Almacen {
   /**
    * Almacén de Articulos
    */
-  private ArrayList<Articulo> almacen;
-  
-  /**
-   * Constructor
-   */
-  protected Almacen() {
-    this.almacen = new Arraylist<>();
-  }
+  private ArrayList<Articulo> almacen = new ArrayList<Articulo>();
 
-  
+
+
   /**
    * Añadir Artículo al Almacén
-   * @throws ArticuloExisteException 
+   * 
+   * @throws ArticuloExisteException
+   * @throws EsNegativo 
    */
-  void annadir(int codigo, String descripcion, int num_unidades, int stock_seguridad,
-      int stock_maximo, double precio_compra, double precio_venta) throws Exception {
+  void annadir(String descripcion, int num_unidades, double precio_compra, double precio_venta) throws ArticuloExisteException, EsNegativo{
     
-    Articulo articulo = new Articulo(codigo, descripcion, num_unidades, stock_seguridad, stock_maximo, precio_compra, precio_venta);
+    Articulo articulo = new Articulo(descripcion, num_unidades, precio_compra, precio_venta);
     if (!almacen.contains(articulo)) {
-      almacen.add(articulo); 
+      almacen.add(articulo);
     }else {
-      throw new ArticuloExisteException("El coche ya existe en el Almacén");
+      throw new ArticuloExisteException("El artículo ya existe en el almacén");
+    }
+  }
+  
+  void eliminar(int codigo) throws ArticuloNoExisteException {
+    Articulo articulo = new Articulo(codigo);
+    if (!almacen.contains(articulo)) {
+      throw new ArticuloNoExisteException("El articulo no se puede borrar, pues no esxiste en este almacén");
+    }else {
+      almacen.remove(articulo);
     }
   }
 
