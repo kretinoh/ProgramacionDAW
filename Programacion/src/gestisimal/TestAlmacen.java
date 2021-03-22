@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class TestAlmacen {
 
-  public static void main(String[] args) throws ArticuloExisteException, EsNegativo {
+  public static void main(String[] args) throws ArticuloExisteException, EsNegativo, ArticuloNoExisteException {
     // GENERAMOS UN ALMACEN
     Almacen almacen = new Almacen();
 
@@ -16,50 +16,60 @@ public class TestAlmacen {
     do {
       switch (menu.seleccionar()) {
         case 1:
-          almacen.annadir(articuloDescripcion(), articuloUnidades(), articuloPrecio(), articuloPrecio());
+          almacen.annadir(articuloDescripcion(), articuloUnidades(), articuloPrecio(),
+              articuloPrecio());
           System.out.println("");
           break;
-          
+        case 2:
+          System.out.println("Introduzca el codigo del articulo a eliminar: ");
+          Scanner s = new Scanner(System.in);
+          int valor = s.nextInt();
+          almacen.eliminar(valor);
+          break;
         case 6:
           System.out.println(almacen.toString());
           System.out.println("");
+          break;
         default:
+          System.out.println("");
+          System.out.println("Introduzca una opción correcta.");
+          escribirCadena();
           break;
       }
-    }while(!out);
-    
+    } while (!out);
+
   }
-  
+
   private static String articuloDescripcion() {
     System.out.println("Introduce la descripción del artículo.");
-    String valor = escribirCadena(); 
+    String valor = escribirCadena();
     return valor;
   }
-  
+
   private static int articuloUnidades() {
     System.out.println("Introduce las unidades del artículo.");
     int valor = escribirEntero();
     return valor;
   }
-  
+
   private static double articuloPrecio() {
     System.out.println("Introduce precio de compra o precio de venta.");
     double valor = escribirDouble();
     return valor;
   }
-  
+
   public static String escribirCadena() {
     Scanner s = new Scanner(System.in);
     String cadena = s.nextLine();
     return cadena;
   }
-  
+
   public static int escribirEntero() {
     Scanner s = new Scanner(System.in);
     int cadena = s.nextInt();
     return cadena;
   }
-  
+
   public static double escribirDouble() {
     Scanner s = new Scanner(System.in);
     double cadena = s.nextDouble();
