@@ -12,7 +12,7 @@ package gestisimal;
  */
 
 public class Articulo {
-  static private int CODIGO = 1;
+  static private int CODIGO = 0;
 
   int codigo, num_unidades, stock_seguridad, stock_maximo;
   double precio_compra, precio_venta;
@@ -35,15 +35,14 @@ public class Articulo {
     // Nuestro 'codigo' va a aumentar cada vez que se cree un artículo
     this.codigo = CODIGO++;
     setDescripcion(descripcion);
-    // Si los mencionados son negativos no los meteremos
-    setNum_unidades(numeroNegativo(num_unidades));
-    this.numeroNegativo((int) precio_compra);
-    this.numeroNegativo((int) precio_venta);
+    setNum_unidades(num_unidades);
+    setPrecio_venta(precio_venta);
+    setPrecio_compra(precio_compra);
   }
 
-  // PREGUNTAR PORQUE SE HACE ESTO
+
   public Articulo(int codigo) {
-    codigo = this.codigo;
+    this.codigo = codigo;
   }
 
   // GETTER AND SETTERS
@@ -60,9 +59,14 @@ public class Articulo {
   /**
    * 
    * @param num_unidades
+   * @throws EsNegativo
    */
-  protected void setNum_unidades(int num_unidades) {
-    this.num_unidades = num_unidades;
+  protected void setNum_unidades(int num_unidades) throws EsNegativo {
+    if (num_unidades > 0) {
+      this.num_unidades = num_unidades;
+    } else {
+      throw new EsNegativo("El número de unidades no puede ser negativo");
+    }
   }
 
 
@@ -114,9 +118,14 @@ public class Articulo {
   /**
    * 
    * @param precio_compra
+   * @throws EsNegativo
    */
-  protected void setPrecio_compra(double precio_compra) {
-    this.precio_compra = precio_compra;
+  protected void setPrecio_compra(double precio_compra) throws EsNegativo {
+    if (precio_compra > 0) {
+      this.precio_compra = precio_compra;
+    } else {
+      throw new EsNegativo("El precio de compra no puede ser negativo");
+    }
   }
 
 
@@ -132,9 +141,14 @@ public class Articulo {
   /**
    * 
    * @param precio_venta
+   * @throws EsNegativo
    */
-  protected void setPrecio_venta(double precio_venta) {
-    this.precio_venta = precio_venta;
+  protected void setPrecio_venta(double precio_venta) throws EsNegativo {
+    if (precio_venta > 0) {
+      this.precio_venta = precio_venta;
+    } else {
+      throw new EsNegativo("El precio de venta no puede ser negativo");
+    }
   }
 
 
@@ -157,17 +171,6 @@ public class Articulo {
 
 
   // COMPORTAMIENTO
-  /**
-   * 
-   * @param numero
-   * @throws EsNegativo
-   */
-  public void numeroNegativo(int numero) throws EsNegativo {
-    if (numero < 0) {
-      throw new EsNegativo("El número introducido es negativo");
-    }
-  }
-
 
 
   @Override
@@ -194,8 +197,9 @@ public class Articulo {
 
   @Override
   public String toString() {
-    return "Articulo [codigo=" + codigo + ", num_unidades=" + num_unidades + ", precio_compra="
-        + precio_compra + ", precio_venta=" + precio_venta + ", descripcion=" + descripcion + "]";
+    return "Articulo [codigo=" + codigo + ", descripcion=" + descripcion + ", num_unidades="
+        + num_unidades + ", precio_compra=" + precio_compra + ", precio_venta=" + precio_venta
+        + "]";
   }
 
 
