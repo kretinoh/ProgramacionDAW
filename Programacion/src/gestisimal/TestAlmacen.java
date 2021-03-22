@@ -21,10 +21,8 @@ public class TestAlmacen {
           System.out.println("");
           break;
         case 2:
-          System.out.println("Introduzca el codigo del articulo a eliminar: ");
-          Scanner s = new Scanner(System.in);
-          int valor = s.nextInt();
-          almacen.eliminar(valor);
+          almacen.eliminar(seleccionarArticulo());
+          System.out.println("");
           break;
         case 6:
           System.out.println(almacen.toString());
@@ -40,6 +38,13 @@ public class TestAlmacen {
 
   }
 
+  
+  private static int seleccionarArticulo() {
+    System.out.println("Introduzca el codigo del articulo a eliminar: ");
+    int valor = escribirEntero();
+    return valor;
+  }
+  
   private static String articuloDescripcion() {
     System.out.println("Introduce la descripción del artículo.");
     String valor = escribirCadena();
