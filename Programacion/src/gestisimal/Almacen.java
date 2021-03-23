@@ -31,25 +31,58 @@ public class Almacen {
    * Añadir Artículo al Almacén
    * 
    * @throws ArticuloExisteException
-   * @throws EsNegativo 
+   * @throws EsNegativo
    */
-  void annadir(String descripcion, int num_unidades, double precio_compra, double precio_venta) throws ArticuloExisteException, EsNegativo{
-    
+  void annadir(String descripcion, int num_unidades, double precio_compra, double precio_venta)
+      throws ArticuloExisteException, EsNegativo {
+
     Articulo articulo = new Articulo(descripcion, num_unidades, precio_compra, precio_venta);
     if (!almacen.contains(articulo)) {
       almacen.add(articulo);
-    }else {
+    } else {
       throw new ArticuloExisteException("El artículo ya existe en el almacén");
     }
   }
-  
+
+
+  /**
+   * Eliminar articulo del Almacén
+   * 
+   * @param codigo
+   * @throws ArticuloNoExisteException
+   */
   void eliminar(int codigo) throws ArticuloNoExisteException {
     Articulo articulo = new Articulo(codigo);
     if (!almacen.contains(articulo)) {
-      throw new ArticuloNoExisteException("El articulo no se puede borrar, pues no esxiste en este almacén");
-    }else {
+      throw new ArticuloNoExisteException(
+          "El articulo no se puede borrar, pues no esxiste en este almacén");
+    } else {
       almacen.remove(articulo);
     }
   }
 
+  /**
+   * Decrementar unidades de un artículo
+   * 
+   * @param codigo
+   * @param cantidad
+   * @throws ArticuloNoExisteException
+   * @throws EsNegativo 
+   */
+  void decrementar(int codigo, int cantidad) throws ArticuloNoExisteException, EsNegativo {
+    Articulo articulo = new Articulo(codigo);
+    if (!almacen.contains(articulo)) {
+      throw new ArticuloNoExisteException(
+          "No se puede modificar las unidades, pues no se encuentra el artículo en este almacén");
+    } else {
+      Articulo articuloFin = this.almacen.get(almacen.indexOf(articulo));
+      articuloFin.restarUnidades(cantidad);
+    }
+
+  }
+
+  @Override
+  public String toString() {
+    return "Almacen [almacen=" + almacen + "]";
+  }
 }
