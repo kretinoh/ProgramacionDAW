@@ -4,7 +4,8 @@ import java.util.Scanner;
 
 public class TestAlmacen {
 
-  public static void main(String[] args) throws ArticuloExisteException, EsNegativo, ArticuloNoExisteException {
+  public static void main(String[] args)
+      throws ArticuloExisteException, EsNegativo, ArticuloNoExisteException {
     // GENERAMOS UN ALMACEN
     Almacen almacen = new Almacen();
 
@@ -20,10 +21,17 @@ public class TestAlmacen {
               articuloPrecio());
           System.out.println("");
           break;
+
         case 2:
           almacen.eliminar(seleccionarArticulo());
           System.out.println("");
           break;
+
+        case 3:
+          almacen.decrementar(seleccionarArticulo(), articuloUnidades());
+          System.out.println("");
+          break;
+
         case 6:
           System.out.println(almacen.toString());
           System.out.println("");
@@ -38,43 +46,83 @@ public class TestAlmacen {
 
   }
 
-  
+
+
+  /**
+   * 
+   * @return
+   */
   private static int seleccionarArticulo() {
-    System.out.println("Introduzca el codigo del articulo a eliminar: ");
+    System.out.println("Introduzca el codigo del articulo: ");
     int valor = escribirEntero();
     return valor;
   }
-  
+
+
+  /**
+   * Dar descripción de un artículo
+   * 
+   * @return
+   */
   private static String articuloDescripcion() {
     System.out.println("Introduce la descripción del artículo.");
     String valor = escribirCadena();
     return valor;
   }
 
+
+  /**
+   * Dar unidades de un artículo
+   * 
+   * @return
+   */
   private static int articuloUnidades() {
     System.out.println("Introduce las unidades del artículo.");
     int valor = escribirEntero();
     return valor;
   }
 
+
+  /**
+   * Dar el precio de un artículo
+   * 
+   * @return
+   */
   private static double articuloPrecio() {
     System.out.println("Introduce precio de compra o precio de venta.");
     double valor = escribirDouble();
     return valor;
   }
 
+
+  /**
+   * Para escribir un String
+   * 
+   * @return
+   */
   public static String escribirCadena() {
     Scanner s = new Scanner(System.in);
     String cadena = s.nextLine();
     return cadena;
   }
 
+
+  /**
+   * Para escribir int y ahorrar lineas en el switch
+   * 
+   * @return
+   */
   public static int escribirEntero() {
     Scanner s = new Scanner(System.in);
     int cadena = s.nextInt();
     return cadena;
   }
 
+  /**
+   * Para escribir double y ahorrarnos lineas en el switch
+   * 
+   * @return
+   */
   public static double escribirDouble() {
     Scanner s = new Scanner(System.in);
     double cadena = s.nextDouble();
