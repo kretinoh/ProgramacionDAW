@@ -40,7 +40,7 @@ public class Articulo {
     setPrecio_compra(precio_compra);
   }
 
-
+  // Constructor usado para hacer referencia a el
   public Articulo(int codigo) {
     this.codigo = codigo;
   }
@@ -66,6 +66,15 @@ public class Articulo {
       this.num_unidades = num_unidades;
     } else {
       throw new EsNegativo("El número de unidades no puede ser negativo");
+    }
+  }
+  
+  protected void restarUnidades(int unidades) throws EsNegativo {
+    int aux = this.num_unidades - unidades;
+    if (aux < 0) {
+      throw new EsNegativo("El número de unidades no puede ser negativo");
+    }else {
+      this.num_unidades = aux;
     }
   }
 
@@ -168,6 +177,8 @@ public class Articulo {
   protected void setDescripcion(String descripcion) {
     this.descripcion = descripcion;
   }
+  
+  
 
 
   // COMPORTAMIENTO
