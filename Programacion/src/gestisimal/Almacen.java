@@ -6,16 +6,16 @@ import java.util.ArrayList;
  * 
  * @author KR371N0H
  * 
- *         -Realizar el alta -Realizar baja -Realizar modificaci�n -Entrada de mercanc�a(incrementa
+ *         -Realizar el alta -Realizar baja -Realizar modificación -Entrada de mercancía(incrementa
  *         unidades) -Salida de mercancia(disminuir unidades)
  * 
- *         -- ESTADO -- ARRAYLIST de Art�culos (Envoltorio de ArrayList)
+ *         -- ESTADO -- ARRAYLIST de Artículos (Envoltorio de ArrayList)
  * 
  *         -- COMPORTAMIENTO -- A�adir art�culos(no puede haber 2 iguales) Eliminar Art�culos
- *         Incrementar Existencias de Art�culos (Se delega en la clase Art�culo) Decrementa las
- *         existencias de Art�culos (nunca por debajo de 0, se delega en la clase Art�culo) Devolver
+ *         Incrementar Existencias de Artículos (Se delega en la clase Artículo) Decrementa las
+ *         existencias de Artículos (nunca por debajo de 0, se delega en la clase Artículo) Devolver
  *         un articulo (para mostrarlo) Para listar el almac�n puede devolver una cadena con todos
- *         los art�culos del almacen (toString)
+ *         los artículos del almacen (toString)
  *
  */
 
@@ -55,7 +55,7 @@ public class Almacen {
     Articulo articulo = new Articulo(codigo);
     if (!almacen.contains(articulo)) {
       throw new ArticuloNoExisteException(
-          "El artículo no se puede borrar, pues no esxiste en este almacén");
+          "El artículo no se puede borrar, pues no existe en este almacén");
     } else {
       almacen.remove(articulo);
     }
@@ -99,6 +99,12 @@ public class Almacen {
 
   }
   
+  /**
+   * 
+   * @param codigo
+   * @return
+   * @throws ArticuloNoExisteException
+   */
   public String mostrar(int codigo) throws ArticuloNoExisteException {
     Articulo articulo = new Articulo(codigo);
     if (!almacen.contains(articulo)) {
@@ -106,7 +112,6 @@ public class Almacen {
     }else {
       return this.almacen.get(this.almacen.indexOf(articulo)).toString();
     }
-    
   }
 
   @Override

@@ -7,8 +7,8 @@ package gestisimal;
  *         ESTADO codigo, descripcion, stock_seguridad, stock_maximo, precio_compra,
  *         precio_venta,num_unidades (NUNCA NEGATIVAS)
  * 
- *         COMPORTAMIENTO - CODIGO GENERADO AUTOMÁTICAMENTE EN EL CONSTRUCTOR - QUITAR SETTERS DE
- *         CÓDIGO - MOSTRAR ARTICULO (toString)
+ *         COMPORTAMIENTO - CODIGO GENERADO AUTOMï¿½TICAMENTE EN EL CONSTRUCTOR - QUITAR SETTERS DE
+ *         Cï¿½DIGO - MOSTRAR ARTICULO (toString)
  */
 
 public class Articulo {
@@ -32,7 +32,7 @@ public class Articulo {
   public Articulo(String descripcion, int num_unidades, double precio_compra, double precio_venta)
       throws EsNegativo {
 
-    // Nuestro 'codigo' va a aumentar cada vez que se cree un artículo
+    // Nuestro 'codigo' va a aumentar cada vez que se cree un artï¿½culo
     this.codigo = CODIGO++;
     setDescripcion(descripcion);
     setNum_unidades(num_unidades);
@@ -65,10 +65,10 @@ public class Articulo {
     if (num_unidades > 0) {
       this.num_unidades = num_unidades;
     } else {
-      throw new EsNegativo("El número de unidades no puede ser negativo");
+      throw new EsNegativo("El nÃºmero de unidades no puede ser negativo");
     }
   }
-  
+
   /**
    * 
    * @param unidades
@@ -77,14 +77,14 @@ public class Articulo {
   protected void restarUnidades(int unidades) throws EsNegativo {
     int aux = this.num_unidades - unidades;
     if (aux < 0) {
-      throw new EsNegativo("El número de unidades no puede ser negativo");
-    }else {
+      throw new EsNegativo("El nÃºmero de unidades no puede ser negativo");
+    } else {
       this.num_unidades = aux;
     }
   }
-  
-  protected void aumentarUnidades(int unidades){
-    int aux = this.num_unidades + unidades;  
+
+  protected void aumentarUnidades(int unidades) {
+    int aux = this.num_unidades + unidades;
   }
 
 
@@ -186,12 +186,6 @@ public class Articulo {
   protected void setDescripcion(String descripcion) {
     this.descripcion = descripcion;
   }
-  
-  
-
-
-  // COMPORTAMIENTO
-
 
   @Override
   public int hashCode() {

@@ -39,10 +39,10 @@ public class TestAlmacen {
         case 4:
           almacen.incrementar(seleccionarArticulo(), articuloUnidades());
           break;
-        
-//          LISTAR UN ARTICULO POR EL CÓDIGO
+
+        // LISTAR UN ARTICULO POR EL CÓDIGO
         case 5:
-          almacen.mostrar(seleccionarArticulo());
+          System.out.println(almacen.mostrar(seleccionarArticulo()));
           break;
 
         // LISTAR ALMACEN
@@ -50,12 +50,12 @@ public class TestAlmacen {
           System.out.println(almacen.toString());
           System.out.println("");
           break;
-          
+
         case 7:
           out = true;
           System.out.println("Hasta la próxima.");
           break;
-          
+
         default:
           System.out.println("");
           System.out.println("Introduzca una opción correcta.");
@@ -80,31 +80,31 @@ public class TestAlmacen {
 
 
   /**
-   * Dar descripci�n de un art�culo
+   * Dar descripciin de un articulo
    * 
    * @return
    */
   private static String articuloDescripcion() {
-    System.out.println("Introduce la descripci�n del art�culo.");
+    System.out.println("Introduce la descripción del artículo.");
     String valor = escribirCadena();
     return valor;
   }
 
 
   /**
-   * Dar unidades de un art�culo
+   * Dar unidades de un artículo
    * 
    * @return
    */
   private static int articuloUnidades() {
-    System.out.println("Introduce las unidades del art�culo.");
+    System.out.println("Introduce las unidades del artículo.");
     int valor = escribirEntero();
     return valor;
   }
 
 
   /**
-   * Dar el precio de un art�culo
+   * Dar el precio de un artículo
    * 
    * @return
    */
