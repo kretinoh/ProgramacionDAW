@@ -6,29 +6,29 @@ import java.util.ArrayList;
  * 
  * @author KR371N0H
  * 
- *         -Realizar el alta -Realizar baja -Realizar modificación -Entrada de mercancía(incrementa
+ *         -Realizar el alta -Realizar baja -Realizar modificaciï¿½n -Entrada de mercancï¿½a(incrementa
  *         unidades) -Salida de mercancia(disminuir unidades)
  * 
- *         -- ESTADO -- ARRAYLIST de Artículos (Envoltorio de ArrayList)
+ *         -- ESTADO -- ARRAYLIST de Artï¿½culos (Envoltorio de ArrayList)
  * 
- *         -- COMPORTAMIENTO -- Añadir artículos(no puede haber 2 iguales) Eliminar Artículos
- *         Incrementar Existencias de Artículos (Se delega en la clase Artículo) Decrementa las
- *         existencias de Artículos (nunca por debajo de 0, se delega en la clase Artículo) Devolver
- *         un articulo (para mostrarlo) Para listar el almacén puede devolver una cadena con todos
- *         los artículos del almacen (toString)
+ *         -- COMPORTAMIENTO -- Aï¿½adir artï¿½culos(no puede haber 2 iguales) Eliminar Artï¿½culos
+ *         Incrementar Existencias de Artï¿½culos (Se delega en la clase Artï¿½culo) Decrementa las
+ *         existencias de Artï¿½culos (nunca por debajo de 0, se delega en la clase Artï¿½culo) Devolver
+ *         un articulo (para mostrarlo) Para listar el almacï¿½n puede devolver una cadena con todos
+ *         los artï¿½culos del almacen (toString)
  *
  */
 
 public class Almacen {
   /**
-   * Almacén de Articulos
+   * Almacï¿½n de Articulos
    */
   private ArrayList<Articulo> almacen = new ArrayList<Articulo>();
 
 
 
   /**
-   * Añadir Artículo al Almacén
+   * Aï¿½adir Artï¿½culo al Almacï¿½n
    * 
    * @throws ArticuloExisteException
    * @throws EsNegativo
@@ -40,13 +40,13 @@ public class Almacen {
     if (!almacen.contains(articulo)) {
       almacen.add(articulo);
     } else {
-      throw new ArticuloExisteException("El artículo ya existe en el almacén");
+      throw new ArticuloExisteException("El artÃ­culo ya existe en el almacÃ©n");
     }
   }
 
 
   /**
-   * Eliminar articulo del Almacén
+   * Eliminar articulo del Almacï¿½n
    * 
    * @param codigo
    * @throws ArticuloNoExisteException
@@ -55,34 +55,65 @@ public class Almacen {
     Articulo articulo = new Articulo(codigo);
     if (!almacen.contains(articulo)) {
       throw new ArticuloNoExisteException(
-          "El articulo no se puede borrar, pues no esxiste en este almacén");
+          "El artÃ­culo no se puede borrar, pues no esxiste en este almacÃ©n");
     } else {
       almacen.remove(articulo);
     }
   }
 
   /**
-   * Decrementar unidades de un artículo
+   * Decrementar unidades de un artÃ­culo
    * 
    * @param codigo
    * @param cantidad
    * @throws ArticuloNoExisteException
-   * @throws EsNegativo 
+   * @throws EsNegativo
    */
   void decrementar(int codigo, int cantidad) throws ArticuloNoExisteException, EsNegativo {
     Articulo articulo = new Articulo(codigo);
     if (!almacen.contains(articulo)) {
       throw new ArticuloNoExisteException(
-          "No se puede modificar las unidades, pues no se encuentra el artículo en este almacén");
+          "No se puede modificar las unidades, pues no se encuentra el artÃ­culo en este almacÃ©n");
     } else {
       Articulo articuloFin = this.almacen.get(almacen.indexOf(articulo));
       articuloFin.restarUnidades(cantidad);
     }
+  }
 
+  /**
+   * Sumamos unidades a un artÃ­culo
+   * 
+   * @param codigo
+   * @param cantidad
+   * @throws ArticuloNoExisteException
+   */
+  void incrementar(int codigo, int cantidad) throws ArticuloNoExisteException {
+    Articulo articulo = new Articulo(codigo);
+    if (!almacen.contains(articulo)) {
+      throw new ArticuloNoExisteException(
+          "No se puede aÃ±adir unidades, pues no se encuentra el artÃ­culo especificado en este almacÃ©n");
+    } else {
+      Articulo articuloFin = this.almacen.get(almacen.indexOf(articulo));
+      articuloFin.aumentarUnidades(cantidad);
+    }
+
+  }
+  
+  public String mostrar(int codigo) throws ArticuloNoExisteException {
+    Articulo articulo = new Articulo(codigo);
+    if (!almacen.contains(articulo)) {
+      throw new ArticuloNoExisteException("El artÃ­culo a listar no estÃ¡ en este almacen");
+    }else {
+      return this.almacen.get(this.almacen.indexOf(articulo)).toString();
+    }
+    
   }
 
   @Override
   public String toString() {
     return "Almacen [almacen=" + almacen + "]";
   }
+
+
+
 }

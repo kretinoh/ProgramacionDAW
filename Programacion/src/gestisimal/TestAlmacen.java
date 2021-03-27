@@ -10,35 +10,55 @@ public class TestAlmacen {
     Almacen almacen = new Almacen();
 
     // MENU
-    MenuAlmacen menu = new MenuAlmacen("Opciones de gestiÛn de almacÈn", "AÒadir artÌculo.",
-        "Eliminar ArtÌculo.", "Decrementar existencias.", "Incrementar existencias.",
-        "Acceder al artÌculo por el cÛdigo", "Listar almacÈn", "Salir del programa");
+    MenuAlmacen menu = new MenuAlmacen("Opciones de gesti√≥n de almac√©n", "A√±adir art√≠culo.",
+        "Eliminar Art√≠culo.", "Decrementar existencias.", "Incrementar existencias.",
+        "Acceder al art√≠culo por el c√≥digo", "Listar almac√©n", "Salir del programa");
     boolean out = false;
     do {
       switch (menu.seleccionar()) {
+        // A√ëADIR ART√çCULOS
         case 1:
           almacen.annadir(articuloDescripcion(), articuloUnidades(), articuloPrecio(),
               articuloPrecio());
           System.out.println("");
           break;
 
+        // ELIMINAR ARTÔøΩCULO
         case 2:
           almacen.eliminar(seleccionarArticulo());
           System.out.println("");
           break;
 
+        // DECREMENTAR EXISTENCIAS
         case 3:
           almacen.decrementar(seleccionarArticulo(), articuloUnidades());
           System.out.println("");
           break;
 
+        // INCREMENTAR EXISTENCIAS
+        case 4:
+          almacen.incrementar(seleccionarArticulo(), articuloUnidades());
+          break;
+        
+//          LISTAR UN ARTICULO POR EL C√ìDIGO
+        case 5:
+          almacen.mostrar(seleccionarArticulo());
+          break;
+
+        // LISTAR ALMACEN
         case 6:
           System.out.println(almacen.toString());
           System.out.println("");
           break;
+          
+        case 7:
+          out = true;
+          System.out.println("Hasta la pr√≥xima.");
+          break;
+          
         default:
           System.out.println("");
-          System.out.println("Introduzca una opciÛn correcta.");
+          System.out.println("Introduzca una opci√≥n correcta.");
           escribirCadena();
           break;
       }
@@ -60,31 +80,31 @@ public class TestAlmacen {
 
 
   /**
-   * Dar descripciÛn de un artÌculo
+   * Dar descripciÔøΩn de un artÔøΩculo
    * 
    * @return
    */
   private static String articuloDescripcion() {
-    System.out.println("Introduce la descripciÛn del artÌculo.");
+    System.out.println("Introduce la descripciÔøΩn del artÔøΩculo.");
     String valor = escribirCadena();
     return valor;
   }
 
 
   /**
-   * Dar unidades de un artÌculo
+   * Dar unidades de un artÔøΩculo
    * 
    * @return
    */
   private static int articuloUnidades() {
-    System.out.println("Introduce las unidades del artÌculo.");
+    System.out.println("Introduce las unidades del artÔøΩculo.");
     int valor = escribirEntero();
     return valor;
   }
 
 
   /**
-   * Dar el precio de un artÌculo
+   * Dar el precio de un artÔøΩculo
    * 
    * @return
    */

@@ -69,6 +69,11 @@ public class Articulo {
     }
   }
   
+  /**
+   * 
+   * @param unidades
+   * @throws EsNegativo
+   */
   protected void restarUnidades(int unidades) throws EsNegativo {
     int aux = this.num_unidades - unidades;
     if (aux < 0) {
@@ -76,6 +81,10 @@ public class Articulo {
     }else {
       this.num_unidades = aux;
     }
+  }
+  
+  protected void aumentarUnidades(int unidades){
+    int aux = this.num_unidades + unidades;  
   }
 
 
@@ -210,7 +219,7 @@ public class Articulo {
   public String toString() {
     return "Articulo [codigo=" + codigo + ", descripcion=" + descripcion + ", num_unidades="
         + num_unidades + ", precio_compra=" + precio_compra + ", precio_venta=" + precio_venta
-        + "]";
+        + "] \n";
   }
 
 
