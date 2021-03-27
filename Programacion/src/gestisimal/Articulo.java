@@ -27,10 +27,10 @@ public class Articulo {
    * @param num_unidades
    * @param precio_compra
    * @param precio_venta
-   * @throws EsNegativo
+   * @throws EsNegativoException
    */
   public Articulo(String descripcion, int num_unidades, double precio_compra, double precio_venta)
-      throws EsNegativo {
+      throws EsNegativoException {
 
     // Nuestro 'codigo' va a aumentar cada vez que se cree un art�culo
     this.codigo = CODIGO++;
@@ -59,25 +59,25 @@ public class Articulo {
   /**
    * 
    * @param num_unidades
-   * @throws EsNegativo
+   * @throws EsNegativoException
    */
-  protected void setNum_unidades(int num_unidades) throws EsNegativo {
+  protected void setNum_unidades(int num_unidades) throws EsNegativoException {
     if (num_unidades > 0) {
       this.num_unidades = num_unidades;
     } else {
-      throw new EsNegativo("El número de unidades no puede ser negativo");
+      throw new EsNegativoException("El número de unidades no puede ser negativo");
     }
   }
 
   /**
    * 
    * @param unidades
-   * @throws EsNegativo
+   * @throws EsNegativoException
    */
-  protected void restarUnidades(int unidades) throws EsNegativo {
+  protected void restarUnidades(int unidades) throws EsNegativoException {
     int aux = this.num_unidades - unidades;
     if (aux < 0) {
-      throw new EsNegativo("El número de unidades no puede ser negativo");
+      throw new EsNegativoException("El número de unidades no puede ser negativo");
     } else {
       this.num_unidades = aux;
     }
@@ -136,13 +136,13 @@ public class Articulo {
   /**
    * 
    * @param precio_compra
-   * @throws EsNegativo
+   * @throws EsNegativoException
    */
-  protected void setPrecio_compra(double precio_compra) throws EsNegativo {
+  protected void setPrecio_compra(double precio_compra) throws EsNegativoException {
     if (precio_compra > 0) {
       this.precio_compra = precio_compra;
     } else {
-      throw new EsNegativo("El precio de compra no puede ser negativo");
+      throw new EsNegativoException("El precio de compra no puede ser negativo");
     }
   }
 
@@ -159,13 +159,13 @@ public class Articulo {
   /**
    * 
    * @param precio_venta
-   * @throws EsNegativo
+   * @throws EsNegativoException
    */
-  protected void setPrecio_venta(double precio_venta) throws EsNegativo {
+  protected void setPrecio_venta(double precio_venta) throws EsNegativoException {
     if (precio_venta > 0) {
       this.precio_venta = precio_venta;
     } else {
-      throw new EsNegativo("El precio de venta no puede ser negativo");
+      throw new EsNegativoException("El precio de venta no puede ser negativo");
     }
   }
 

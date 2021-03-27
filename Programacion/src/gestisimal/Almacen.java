@@ -31,10 +31,10 @@ public class Almacen {
    * A�adir Art�culo al Almac�n
    * 
    * @throws ArticuloExisteException
-   * @throws EsNegativo
+   * @throws EsNegativoException
    */
   void annadir(String descripcion, int num_unidades, double precio_compra, double precio_venta)
-      throws ArticuloExisteException, EsNegativo {
+      throws ArticuloExisteException, EsNegativoException {
 
     Articulo articulo = new Articulo(descripcion, num_unidades, precio_compra, precio_venta);
     if (!almacen.contains(articulo)) {
@@ -67,9 +67,9 @@ public class Almacen {
    * @param codigo
    * @param cantidad
    * @throws ArticuloNoExisteException
-   * @throws EsNegativo
+   * @throws EsNegativoException
    */
-  void decrementar(int codigo, int cantidad) throws ArticuloNoExisteException, EsNegativo {
+  void decrementar(int codigo, int cantidad) throws ArticuloNoExisteException, EsNegativoException {
     Articulo articulo = new Articulo(codigo);
     if (!almacen.contains(articulo)) {
       throw new ArticuloNoExisteException(

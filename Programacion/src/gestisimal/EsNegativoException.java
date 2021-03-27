@@ -1,7 +1,7 @@
 package gestisimal;
 
-public class EsNegativo extends Exception {
-  public EsNegativo(String m) {
+public class EsNegativoException extends Exception {
+  public EsNegativoException(String m) {
     super(m);
   }
 
