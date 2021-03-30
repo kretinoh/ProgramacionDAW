@@ -23,7 +23,7 @@ public class TestAlmacen {
           System.out.println("");
           break;
 
-        // ELIMINAR ART�CULO
+        // ELIMINAR ARTÍCULO
         case 2:
           almacen.eliminar(seleccionarArticulo());
           System.out.println("");
