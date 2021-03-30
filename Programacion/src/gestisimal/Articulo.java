@@ -7,8 +7,8 @@ package gestisimal;
  *         ESTADO codigo, descripcion, stock_seguridad, stock_maximo, precio_compra,
  *         precio_venta,num_unidades (NUNCA NEGATIVAS)
  * 
- *         COMPORTAMIENTO - CODIGO GENERADO AUTOM�TICAMENTE EN EL CONSTRUCTOR - QUITAR SETTERS DE
- *         C�DIGO - MOSTRAR ARTICULO (toString)
+ *         COMPORTAMIENTO - CODIGO GENERADO AUTOMÁTICAMENTE EN EL CONSTRUCTOR - QUITAR SETTERS DE
+ *         CÓDIGO - MOSTRAR ARTICULO (toString)
  */
 
 public class Articulo {
