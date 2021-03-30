@@ -11,24 +11,24 @@ import java.util.ArrayList;
  * 
  *         -- ESTADO -- ARRAYLIST de Artículos (Envoltorio de ArrayList)
  * 
- *         -- COMPORTAMIENTO -- A�adir art�culos(no puede haber 2 iguales) Eliminar Art�culos
+ *         -- COMPORTAMIENTO -- Añadir artículos(no puede haber 2 iguales) Eliminar Artículos
  *         Incrementar Existencias de Artículos (Se delega en la clase Artículo) Decrementa las
  *         existencias de Artículos (nunca por debajo de 0, se delega en la clase Artículo) Devolver
- *         un articulo (para mostrarlo) Para listar el almac�n puede devolver una cadena con todos
+ *         un articulo (para mostrarlo) Para listar el almacén puede devolver una cadena con todos
  *         los artículos del almacen (toString)
  *
  */
 
 public class Almacen {
   /**
-   * Almac�n de Articulos
+   * Almacén de Articulos
    */
   private ArrayList<Articulo> almacen = new ArrayList<Articulo>();
 
 
 
   /**
-   * A�adir Art�culo al Almac�n
+   * Añadir Artículo al Almacén
    * 
    * @throws ArticuloExisteException
    * @throws EsNegativoException
@@ -46,7 +46,7 @@ public class Almacen {
 
 
   /**
-   * Eliminar articulo del Almac�n
+   * Eliminar articulo del Almacén
    * 
    * @param codigo
    * @throws ArticuloNoExisteException
