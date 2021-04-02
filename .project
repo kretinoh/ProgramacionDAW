@@ -14,21 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>src/gestesimal/Articulo.java</name>
-			<type>1</type>
-			<locationURI>PARENT-4-PROJECT_LOC/GRADO%20SUPERIOR%20DAW/Segundo%20Trimestre/Programacion/gestisimal/Articulo.java</locationURI>
-		</link>
-		<link>
-			<name>src/gestesimal/ArticuloNoExisteException.java</name>
-			<type>1</type>
-			<locationURI>PARENT-4-PROJECT_LOC/GRADO%20SUPERIOR%20DAW/Segundo%20Trimestre/Programacion/gestisimal/ArticuloNoExisteException.java</locationURI>
-		</link>
-		<link>
-			<name>src/gestesimal/EsNegativoException.java</name>
-			<type>1</type>
-			<locationURI>PARENT-4-PROJECT_LOC/GRADO%20SUPERIOR%20DAW/Segundo%20Trimestre/Programacion/gestisimal/EsNegativoException.java</locationURI>
-		</link>
-	</linkedResources>
 </projectDescription>
