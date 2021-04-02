@@ -105,7 +105,7 @@ public class Almacen {
    * @return
    * @throws ArticuloNoExisteException
    */
-  public String mostrar(int codigo) throws ArticuloNoExisteException {
+  public String devolverArticulo(int codigo) throws ArticuloNoExisteException {
     Articulo articulo = new Articulo(codigo);
     if (!almacen.contains(articulo)) {
       throw new ArticuloNoExisteException("El artículo a listar no está en este almacen");

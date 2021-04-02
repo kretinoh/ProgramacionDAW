@@ -42,7 +42,7 @@ public class TestAlmacen {
 
         // LISTAR UN ARTICULO POR EL CÓDIGO
         case 5:
-          System.out.println(almacen.mostrar(seleccionarArticulo()));
+          System.out.println(almacen.devolverArticulo(seleccionarArticulo()));
           break;
 
         // LISTAR ALMACEN
