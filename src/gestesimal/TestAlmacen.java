@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class TestAlmacen {
 
   public static void main(String[] args)
-      throws ArticuloExisteException, EsNegativoException, ArticuloNoExisteException {
+      throws ArticuloExisteException, ArticuloNegativoException, ArticuloNoExisteException {
     // GENERAMOS UN ALMACEN
     Almacen almacen = new Almacen();
 
