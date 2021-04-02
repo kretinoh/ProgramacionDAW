@@ -13,7 +13,7 @@ package gestesimal;
  */
 
 public class Articulo {
-  static private int codigoArticulo = 0;
+  static private int codigoArticulo = 1;
 
   int codigo, numUnidades, stockSeguridad, stockMaximo;
   double precioCompra, precioVenta;
