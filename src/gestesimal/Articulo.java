@@ -7,10 +7,9 @@ package gestesimal;
  *         ESTADO codigo, descripcion, stockSeguridad, stockMaximo, precioCompra,
  *         precioVenta,numUnidades (NUNCA NEGATIVAS)
  * 
- *         COMPORTAMIENTO - CODIGO GENERADO AUTOMÁTICAMENTE EN EL CONSTRUCTOR - QUITAR SETTERS DEL HEAD
- *         CÓDIGO - MOSTRAR ARTICULO (toString)
- *         CÓDIGO - MOSTRAR ARTICULO (toString)
->>>>>>> branch 'master' of https://github.com/kretinoh/ProgramacionDAW.git
+ *         COMPORTAMIENTO - CODIGO GENERADO AUTOMÁTICAMENTE EN EL CONSTRUCTOR - QUITAR SETTERS DEL
+ *         HEAD CÓDIGO - MOSTRAR ARTICULO (toString) CÓDIGO - MOSTRAR ARTICULO (toString) >>>>>>>
+ *         branch 'master' of https://github.com/kretinoh/ProgramacionDAW.git
  */
 
 public class Articulo {
@@ -31,15 +30,20 @@ public class Articulo {
    * @param precioVenta
    * @throws ArticuloNegativoException
    */
-  public Articulo(String descripcion, int numUnidades, double precioCompra, double precioVenta)
-      throws ArticuloNegativoException {
+  public Articulo(String descripcion, int numUnidades, double precioCompra, double precioVenta) {
 
     // Nuestro 'codigo' va a aumentar cada vez que se cree un art�culo
     this.codigo = codigoArticulo++;
     setDescripcion(descripcion);
-    setNumUnidades(numUnidades);
-    setPrecioVenta(precioVenta);
-    setPrecioCompra(precioCompra);
+    
+    try {
+      setNumUnidades(numUnidades);
+      setPrecioVenta(precioVenta);
+      setPrecioCompra(precioCompra);
+    } catch (ArticuloNegativoException e) {
+      System.out.println("Asegurate de que ni el numero de unidades, precio de compra o precio de venta sea negativo");
+    }
+
   }
 
   // Constructor usado para hacer referencia a el
@@ -210,9 +214,10 @@ public class Articulo {
       return false;
     return true;
   }
-/**
- * Añadimos un \n para el salto de linea
- */
+
+  /**
+   * Añadimos un \n para el salto de linea
+   */
   @Override
   public String toString() {
     return "Articulo [codigo=" + codigo + ", descripcion=" + descripcion + ", num de unidades="
