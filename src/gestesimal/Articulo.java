@@ -32,7 +32,7 @@ public class Articulo {
    */
   public Articulo(String descripcion, int numUnidades, double precioCompra, double precioVenta) {
 
-    // Nuestro 'codigo' va a aumentar cada vez que se cree un art�culo
+    // Nuestro 'codigo' va a aumentar cada vez que se cree un artículo
     this.codigo = codigoArticulo++;
     setDescripcion(descripcion);
     
