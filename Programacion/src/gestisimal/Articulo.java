@@ -7,37 +7,37 @@ package gestisimal;
  *         ESTADO codigo, descripcion, stock_seguridad, stock_maximo, precio_compra,
  *         precio_venta,num_unidades (NUNCA NEGATIVAS)
  * 
- *         COMPORTAMIENTO - CODIGO GENERADO AUTOM�TICAMENTE EN EL CONSTRUCTOR - QUITAR SETTERS DE
+ *         COMPORTAMIENTO - CODIGO GENERADO AUTOMÁTICAMENTE EN EL CONSTRUCTOR - QUITAR SETTERS DE
  *         C�DIGO - MOSTRAR ARTICULO (toString)
  */
 
 public class Articulo {
   static private int CODIGO = 0;
 
-  int codigo, num_unidades, stock_seguridad, stock_maximo;
-  double precio_compra, precio_venta;
+  int codigo, numUnidades, stockSeguridad, stockMaximo;
+  double precioCompra, precioVenta;
   String descripcion;
 
 
   /**
-   * Constructor1
+   * Constructor full
    * 
    * @param codigo
    * @param descripcion
-   * @param num_unidades
-   * @param precio_compra
-   * @param precio_venta
+   * @param numUnidades
+   * @param precioCompra
+   * @param precioVenta
    * @throws EsNegativoException
    */
-  public Articulo(String descripcion, int num_unidades, double precio_compra, double precio_venta)
+  public Articulo(String descripcion, int numUnidades, double precioCompra, double precioVenta)
       throws EsNegativoException {
 
     // Nuestro 'codigo' va a aumentar cada vez que se cree un art�culo
     this.codigo = CODIGO++;
     setDescripcion(descripcion);
-    setNum_unidades(num_unidades);
-    setPrecio_venta(precio_venta);
-    setPrecio_compra(precio_compra);
+    setNumUnidades(numUnidades);
+    setPrecioVenta(precioVenta);
+    setPrecioCompra(precioCompra);
   }
 
   // Constructor usado para hacer referencia a el
@@ -51,19 +51,19 @@ public class Articulo {
    * 
    * @return
    */
-  protected int getNum_unidades() {
-    return num_unidades;
+  protected int getNumUnidades() {
+    return numUnidades;
   }
 
 
   /**
    * 
-   * @param num_unidades
+   * @param numUnidades
    * @throws EsNegativoException
    */
-  protected void setNum_unidades(int num_unidades) throws EsNegativoException {
-    if (num_unidades > 0) {
-      this.num_unidades = num_unidades;
+  protected void setNumUnidades(int numUnidades) throws EsNegativoException {
+    if (numUnidades > 0) {
+      this.numUnidades = numUnidades;
     } else {
       throw new EsNegativoException("El número de unidades no puede ser negativo");
     }
@@ -75,16 +75,16 @@ public class Articulo {
    * @throws EsNegativoException
    */
   protected void restarUnidades(int unidades) throws EsNegativoException {
-    int aux = this.num_unidades - unidades;
+    int aux = this.numUnidades - unidades;
     if (aux < 0) {
       throw new EsNegativoException("El número de unidades no puede ser negativo");
     } else {
-      this.num_unidades = aux;
+      this.numUnidades = aux;
     }
   }
 
   protected void aumentarUnidades(int unidades) {
-    int aux = this.num_unidades + unidades;
+    int aux = this.numUnidades + unidades;
   }
 
 
@@ -92,17 +92,17 @@ public class Articulo {
    * 
    * @return
    */
-  protected int getStock_seguridad() {
-    return stock_seguridad;
+  protected int getStockSeguridad() {
+    return stockSeguridad;
   }
 
 
   /**
    * 
-   * @param stock_seguridad
+   * @param stockSeguridad
    */
-  protected void setStock_seguridad(int stock_seguridad) {
-    this.stock_seguridad = stock_seguridad;
+  protected void setStockSeguridad(int stockSeguridad) {
+    this.stockSeguridad = stockSeguridad;
   }
 
 
@@ -110,17 +110,17 @@ public class Articulo {
    * 
    * @return
    */
-  protected int getStock_maximo() {
-    return stock_maximo;
+  protected int getStockMaximo() {
+    return stockMaximo;
   }
 
 
   /**
    * 
-   * @param stock_maximo
+   * @param stockMaximo
    */
-  protected void setStock_maximo(int stock_maximo) {
-    this.stock_maximo = stock_maximo;
+  protected void setStockMaximo(int stockMaximo) {
+    this.stockMaximo = stockMaximo;
   }
 
 
@@ -128,19 +128,19 @@ public class Articulo {
    * 
    * @return
    */
-  protected double getPrecio_compra() {
-    return precio_compra;
+  protected double getPrecioCompra() {
+    return precioCompra;
   }
 
 
   /**
    * 
-   * @param precio_compra
+   * @param precioCompra
    * @throws EsNegativoException
    */
-  protected void setPrecio_compra(double precio_compra) throws EsNegativoException {
-    if (precio_compra > 0) {
-      this.precio_compra = precio_compra;
+  protected void setPrecioCompra(double precioCompra) throws EsNegativoException {
+    if (precioCompra > 0) {
+      this.precioCompra = precioCompra;
     } else {
       throw new EsNegativoException("El precio de compra no puede ser negativo");
     }
@@ -151,19 +151,19 @@ public class Articulo {
    * 
    * @return
    */
-  protected double getPrecio_venta() {
-    return precio_venta;
+  protected double getPrecioVenta() {
+    return precioVenta;
   }
 
 
   /**
    * 
-   * @param precio_venta
+   * @param precioVenta
    * @throws EsNegativoException
    */
-  protected void setPrecio_venta(double precio_venta) throws EsNegativoException {
-    if (precio_venta > 0) {
-      this.precio_venta = precio_venta;
+  protected void setPrecioVenta(double precioVenta) throws EsNegativoException {
+    if (precioVenta > 0) {
+      this.precioVenta = precioVenta;
     } else {
       throw new EsNegativoException("El precio de venta no puede ser negativo");
     }
@@ -208,11 +208,13 @@ public class Articulo {
       return false;
     return true;
   }
-
+/**
+ * Añadimos un \n para el salto de linea
+ */
   @Override
   public String toString() {
-    return "Articulo [codigo=" + codigo + ", descripcion=" + descripcion + ", num_unidades="
-        + num_unidades + ", precio_compra=" + precio_compra + ", precio_venta=" + precio_venta
+    return "Articulo [codigo=" + codigo + ", descripcion=" + descripcion + ", num de unidades="
+        + numUnidades + ", precio de compra=" + precioCompra + ", precio de venta=" + precioVenta
         + "] \n";
   }
 
