@@ -35,13 +35,14 @@ public class Articulo {
     // Nuestro 'codigo' va a aumentar cada vez que se cree un artículo
     this.codigo = codigoArticulo++;
     setDescripcion(descripcion);
-    
+
     try {
       setNumUnidades(numUnidades);
       setPrecioVenta(precioVenta);
       setPrecioCompra(precioCompra);
     } catch (ArticuloNegativoException e) {
-      System.out.println("Asegurate de que ni el numero de unidades, precio de compra o precio de venta sea negativo");
+      System.out.println(
+          "Asegurate de que ni el numero de unidades, precio de compra o precio de venta sea negativo");
     }
 
   }
@@ -90,7 +91,7 @@ public class Articulo {
   }
 
   protected void aumentarUnidades(int unidades) {
-    int aux = this.numUnidades + unidades;
+    this.numUnidades += unidades;
   }
 
 

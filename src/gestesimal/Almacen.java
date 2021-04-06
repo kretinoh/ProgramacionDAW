@@ -98,7 +98,7 @@ public class Almacen {
     }
 
   }
-  
+
   /**
    * 
    * @param codigo
@@ -118,7 +118,4 @@ public class Almacen {
   public String toString() {
     return "Almacen [almacen=" + almacen + "]";
   }
-
-
-
 }
