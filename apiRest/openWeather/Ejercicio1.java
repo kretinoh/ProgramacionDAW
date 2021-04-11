@@ -29,27 +29,24 @@ public class Ejercicio1 {
     String endpoint = ROOT_ENDPOINT + PARAMS;
 
     HttpClient client = HttpClient.newHttpClient();
+    System.out.println(endpoint);
 
     HttpRequest request = HttpRequest.newBuilder().uri(URI.create(endpoint)).GET().build();
     HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
     if (response.statusCode() != 200) {
       System.out.println("No se ha podido hacer la petición. Error " + response.statusCode());
-    }else {
-      response.statusCode();
     }
-    return endpoint;
-    
+    return response.body();
   }
 
-  private static void mostrarDatos(String json) {    
+  private static void mostrarDatos(String json) { 
+    System.out.println(json);
     Gson gson = new Gson(); 
     Pronostico dto = gson.fromJson(json, Pronostico.class);
     
     for(List lista : dto.getList()) {
-//      mostrarMediciones(lista);
-//      mostrarLocalizacion(lista);
       System.out.println(lista.getMain().getTempMin());
-      //System.out.println(lista.getMain().getHumidity());
+      System.out.println(lista.getMain().getTempMax());
     }    
 //    dto.getList().get(0).getMain().getTempMax();
   }
