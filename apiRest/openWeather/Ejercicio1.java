@@ -20,7 +20,7 @@ public class Ejercicio1 {
     try {
       String jsonResponde = getResponseOpenWM();
       mostrarDatos(jsonResponde);
-    } catch (Exception e){
+    } catch (Exception e) {
       System.out.println(e);
     }
   }
@@ -29,7 +29,6 @@ public class Ejercicio1 {
     String endpoint = ROOT_ENDPOINT + PARAMS;
 
     HttpClient client = HttpClient.newHttpClient();
-    System.out.println(endpoint);
 
     HttpRequest request = HttpRequest.newBuilder().uri(URI.create(endpoint)).GET().build();
     HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
@@ -39,18 +38,28 @@ public class Ejercicio1 {
     return response.body();
   }
 
-  private static void mostrarDatos(String json) { 
-    System.out.println(json);
-    Gson gson = new Gson(); 
+  private static void mostrarDatos(String json) {
+    Gson gson = new Gson();
     Pronostico dto = gson.fromJson(json, Pronostico.class);
-    
-    for(List lista : dto.getList()) {
-      System.out.println(lista.getMain().getTempMin());
-      System.out.println(lista.getMain().getTempMax());
-    }    
-//    dto.getList().get(0).getMain().getTempMax();
+
+    for (List lista : dto.getList()) {
+      mostrarMediciones(lista);
+    }
+
+    // dto.getList().get(0).getMain().getTempMax();
+
   }
-  
-//  private static void mostrarMediciones(List<Measurement> list)
+
+
+  private static void mostrarMediciones(List lista) {
+    System.out.println("----------------------");
+    System.out.println("· " + lista.getDtTxt());
+    System.out.println("Temperatura media");
+    System.out.println((lista.getMain().getTempMin() + lista.getMain().getTempMax())/2);
+    System.out.println("Temperatura mínima");
+    System.out.println(lista.getMain().getTempMin());
+    System.out.println("Temperatura máxima");
+    System.out.println(lista.getMain().getTempMax());
+  }
 
 }
