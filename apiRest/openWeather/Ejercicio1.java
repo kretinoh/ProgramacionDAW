@@ -87,7 +87,7 @@ public class Ejercicio1 {
       mostrarMediciones(lista);
     }
   }
-  
+
   /**
    * Accediendo a la lista vamos a sacar los datos que necesitamos
    * 
@@ -103,5 +103,4 @@ public class Ejercicio1 {
     System.out.println("Temperatura máxima");
     System.out.println(lista.getMain().getTempMax());
   }
-
 }
